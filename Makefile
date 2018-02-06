@@ -599,7 +599,6 @@ endif
 KBUILD_CFLAGS += $(CLANG_TARGET) $(CLANG_GCC_TC)
 KBUILD_AFLAGS += $(CLANG_TARGET) $(CLANG_GCC_TC)
 KBUILD_CPPFLAGS += $(call cc-option,-Qunused-arguments,)
-KBUILD_CFLAGS += $(call cc-disable-warning, unused-variable)
 KBUILD_CFLAGS += $(call cc-disable-warning, format-invalid-specifier)
 KBUILD_CFLAGS += $(call cc-disable-warning, gnu)
 KBUILD_CFLAGS += $(call cc-disable-warning, address-of-packed-member)
@@ -618,7 +617,6 @@ else
 # These warnings generated too much noise in a regular build.
 # Use make W=1 to enable them (see scripts/Makefile.build)
 KBUILD_CFLAGS   += $(call cc-disable-warning, unused-but-set-variable)
-KBUILD_CFLAGS   += $(call cc-disable-warning, unused-const-variable)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, format-truncation)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, format-overflow)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, int-in-bool-context)
@@ -628,6 +626,7 @@ KBUILD_CFLAGS   += $(call cc-disable-warning, sizeof-pointer-memaccess)
 KBUILD_CFLAGS   += $(call cc-disable-warning, packed-not-aligned)
 KBUILD_CFLAGS   += $(call cc-disable-warning, stringop-overflow)
 endif
+KBUILD_CFLAGS   += $(call cc-disable-warning, unused-const-variable)
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
 
